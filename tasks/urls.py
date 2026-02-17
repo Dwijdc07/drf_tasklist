@@ -1,0 +1,17 @@
+from django.contrib import admin
+from django.urls import path, include
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
+from tasks.views import hello
+from .views import TasksView
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'tasks_add', TasksView)
+
+urlpatterns = [
+    # path('tasks/',hello,name="hello"),
+    path('',include(router.urls))
+]
+
